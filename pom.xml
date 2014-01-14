@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dynastymasra.augmented</groupId>
+    <artifactId>LocationReality</artifactId>
+    <version>1.0</version>
+    <packaging>apk</packaging>
+
+    <name>Location Reality</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.0_r3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.maps</groupId>
+            <artifactId>maps</artifactId>
+            <version>14_r2</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>3.8.2</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <sdk>
+                        <!-- platform as api level (api level 16 = platform 4.1)-->
+                        <platform>14</platform>
+                    </sdk>
+                    <emulator>
+                        <avd>Google-4.0</avd>
+                        <wait>30000</wait>
+                    </emulator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
