@@ -55,7 +55,7 @@ public class Spalsh extends Activity {
             @Override
             public void run() {
                 //To change body of implemented methods use File | Settings | File Templates.
-                imageMap.setVisibility(View.VISIBLE);
+                imageRoute.setVisibility(View.VISIBLE);
             }
         }, 5000);
 
@@ -63,17 +63,9 @@ public class Spalsh extends Activity {
             @Override
             public void run() {
                 //To change body of implemented methods use File | Settings | File Templates.
-                imageRoute.setVisibility(View.VISIBLE);
-            }
-        }, 6000);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //To change body of implemented methods use File | Settings | File Templates.
                 imageEye.setVisibility(View.VISIBLE);
             }
-        }, 7000);
+        }, 6000);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -83,6 +75,6 @@ public class Spalsh extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 8000);
+        }, 7000);
     }
 }

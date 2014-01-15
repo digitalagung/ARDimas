@@ -1,6 +1,7 @@
 package com.dynastymasra.augmented.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,6 +38,8 @@ public class Home extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //To change body of implemented methods use File | Settings | File Templates.
                 Toast.makeText(Home.this, text[i], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Home.this, MenuList.class);
+                startActivity(intent);
             }
         });
     }

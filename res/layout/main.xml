@@ -31,13 +31,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         <ImageView
-                android:src="@drawable/map"
-                android:layout_margin="1px"
-                android:id="@+id/drawableMap"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <ImageView
                 android:src="@drawable/route"
                 android:layout_margin="1px"
                 android:id="@+id/drawableRoute"
