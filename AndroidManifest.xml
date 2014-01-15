@@ -21,9 +21,10 @@
         <activity android:name=".view.Home" android:screenOrientation="portrait"/>
         <activity android:name=".view.MenuList"
                   android:screenOrientation="portrait">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.dynastymasra.augmented.view.Home"/>
+            <meta-data android:name="android.support.UI_OPTIONS"
+                       android:value="splitActionBarWhenNarrow"/>
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                       android:value="com.dynastymasra.augmented.view.Home"/>
         </activity>
     </application>
 </manifest>

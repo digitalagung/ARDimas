@@ -39,7 +39,6 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
         viewPager.setAdapter(tabPagerAdapter);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.setDisplayShowTitleEnabled(false);
 
         for (Integer icon : image) {
             actionBar.addTab(actionBar.newTab().setIcon(icon).setTabListener(this));
