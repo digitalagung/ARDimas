@@ -3,6 +3,9 @@ package com.dynastymasra.augmented.custom;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.dynastymasra.augmented.view.GridLocationView;
+import com.dynastymasra.augmented.view.MapLocationView;
+import com.dynastymasra.augmented.view.RealityLocationView;
 
 /**
  * Author   : Dynastymasra
@@ -22,19 +25,17 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int i) {
         switch (i) {
             case 0:
-                return null;
+                return new GridLocationView();
             case 1:
-                return null;
+                return new MapLocationView();
             case 2:
-                return null;
-            case 3:
-                return null;
+                return new RealityLocationView();
         }
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public int getCount() {
-        return 4;  //To change body of implemented methods use File | Settings | File Templates.
+        return 3;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

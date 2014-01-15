@@ -10,7 +10,7 @@ import com.dynastymasra.augmented.view.Home;
 
 public class Spalsh extends Activity {
 
-    private ImageView imageWorld, imageTemple, imageMontain, imageMap, imageRoute, imageEye;
+    private ImageView imageWorld, imageTemple, imageMontain, imageRoute, imageEye;
 
     /**
      * Called when the activity is first created.
@@ -23,7 +23,6 @@ public class Spalsh extends Activity {
         imageWorld = (ImageView) findViewById(R.id.drawableWorld);
         imageTemple = (ImageView) findViewById(R.id.drawableTemple);
         imageMontain = (ImageView) findViewById(R.id.drawableMontain);
-        imageMap = (ImageView) findViewById(R.id.drawableMap);
         imageRoute = (ImageView) findViewById(R.id.drawableRoute);
         imageEye = (ImageView) findViewById(R.id.drawableEye);
 

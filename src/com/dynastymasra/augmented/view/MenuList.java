@@ -1,10 +1,10 @@
 package com.dynastymasra.augmented.view;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +25,7 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
     private ViewPager viewPager;
     private TabPagerAdapter tabPagerAdapter;
     private ActionBar actionBar;
-    private Integer[] image = {R.drawable.grid, R.drawable.map, R.drawable.camera, R.drawable.overflow};
+    private Integer[] image = {R.drawable.grid, R.drawable.map, R.drawable.camera};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +33,35 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
         setContentView(R.layout.menu_list);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        ActionBar actionBar = getActionBar();
+        actionBar = getActionBar();
         tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
 
-//        viewPager.setAdapter(tabPagerAdapter);
-        actionBar.setHomeButtonEnabled(true);
+        viewPager.setAdapter(tabPagerAdapter);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setDisplayShowTitleEnabled(false);
 
         for (Integer icon : image) {
             actionBar.addTab(actionBar.newTab().setIcon(icon).setTabListener(this));
         }
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                //To change body of implemented methods use File | Settings | File Templates.
+                actionBar.setSelectedNavigationItem(i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
     }
 
     @Override
@@ -55,12 +74,19 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+
         return super.onOptionsItemSelected(item);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         //To change body of implemented methods use File | Settings | File Templates.
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override

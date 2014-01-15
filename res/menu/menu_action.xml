@@ -2,9 +2,19 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/actionSearch"
+          android:title="Search"
           android:icon="@drawable/search"
           android:showAsAction="ifRoom"/>
     <item android:id="@+id/actionRefresh"
           android:icon="@drawable/refresh"
+          android:title="Refresh"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/actionHelp"
+          android:icon="@drawable/help"
+          android:title="Help"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/actionAbout"
+          android:icon="@drawable/about"
+          android:title="About"
           android:showAsAction="ifRoom"/>
 </menu>
