@@ -3,6 +3,7 @@ package com.dynastymasra.augmented.view;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
@@ -10,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 import com.dynastymasra.augmented.R;
 import com.dynastymasra.augmented.custom.TabPagerAdapter;
 
@@ -56,9 +56,15 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
             @Override
             public void onPageSelected(int i) {
                 //To change body of implemented methods use File | Settings | File Templates.
+
                 if (actionBar.getSelectedNavigationIndex() == 2) {
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                } else if (actionBar.getSelectedNavigationIndex() == 1) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                } else if (actionBar.getSelectedNavigationIndex() == 0) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 }
+
                 actionBar.setSelectedNavigationItem(i);
             }
 

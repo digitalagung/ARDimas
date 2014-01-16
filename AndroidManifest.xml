@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".view.Home" android:screenOrientation="portrait"/>
         <activity android:name=".view.MenuList"
-                  android:screenOrientation="portrait"
+                  android:configChanges="orientation|screenSize"
                   android:uiOptions="splitActionBarWhenNarrow">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                        android:value="com.dynastymasra.augmented.view.Home"/>
