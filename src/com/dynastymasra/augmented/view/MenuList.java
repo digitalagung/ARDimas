@@ -2,6 +2,7 @@ package com.dynastymasra.augmented.view;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
@@ -9,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 import com.dynastymasra.augmented.R;
 import com.dynastymasra.augmented.custom.TabPagerAdapter;
 
@@ -33,11 +35,12 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
         setContentView(R.layout.menu_list);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        actionBar = getActionBar();
         tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
-
         viewPager.setAdapter(tabPagerAdapter);
+
+        actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         for (Integer icon : image) {
@@ -53,6 +56,9 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
             @Override
             public void onPageSelected(int i) {
                 //To change body of implemented methods use File | Settings | File Templates.
+                if (actionBar.getSelectedNavigationIndex() == 2) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                }
                 actionBar.setSelectedNavigationItem(i);
             }
 
@@ -66,7 +72,7 @@ public class MenuList extends FragmentActivity implements ActionBar.TabListener 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_action,menu);
+        menuInflater.inflate(R.menu.menu_action, menu);
 
         return super.onCreateOptionsMenu(menu);    //To change body of overridden methods use File | Settings | File Templates.
     }

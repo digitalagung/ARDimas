@@ -24,12 +24,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.android.future</groupId>
-            <artifactId>usb</artifactId>
-            <version>14_r2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>support-v4</artifactId>
             <version>r7</version>
