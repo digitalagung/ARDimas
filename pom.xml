@@ -10,25 +10,38 @@
 
     <name>Location Reality</name>
 
+    <properties>
+        <android.version>4.0_r3</android.version>
+        <android.supportv4.version>19.0.1</android.supportv4.version>
+        <android.maps.version>14_r2</android.maps.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>android</groupId>
             <artifactId>android</artifactId>
-            <version>4.0_r3</version>
+            <version>${android.version}</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>android.support</groupId>
+                    <artifactId>compatibility-v4</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v4</artifactId>
+            <version>${android.supportv4.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.android.maps</groupId>
             <artifactId>maps</artifactId>
-            <version>14_r2</version>
+            <version>${android.maps.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.android</groupId>
-            <artifactId>support-v4</artifactId>
-            <version>r7</version>
-        </dependency>
     </dependencies>
+
     <build>
         <sourceDirectory>src</sourceDirectory>
         <finalName>${project.artifactId}</finalName>
