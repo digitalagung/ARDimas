@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.Home" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MainActivity" android:screenOrientation="portrait"/>
         <activity android:name=".view.MenuList"
                   android:configChanges="orientation|screenSize"
                   android:uiOptions="splitActionBarWhenNarrow">

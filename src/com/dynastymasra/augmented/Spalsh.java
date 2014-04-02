@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import com.dynastymasra.augmented.activity.MainActivity;
 import com.dynastymasra.augmented.view.Home;
 
 public class Spalsh extends Activity {
@@ -70,7 +71,7 @@ public class Spalsh extends Activity {
             @Override
             public void run() {
                 //To change body of implemented methods use File | Settings | File Templates.
-                Intent intent = new Intent(Spalsh.this, Home.class);
+                Intent intent = new Intent(Spalsh.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
