@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.dynastymasra.mobilib.R;
-import com.dynastymasra.mobilib.domain.DrawerItem;
+import com.dynastymasra.lbs.R;
+import com.dynastymasra.lbs.domain.DrawerItem;
 
 import java.util.List;
 
@@ -59,32 +59,20 @@ public class CustomDrawerAdapter extends BaseAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.drawerTitle);
         LinearLayout headerLayout = (LinearLayout) convertView.findViewById(R.id.headerLayout);
         LinearLayout itemLayout = (LinearLayout) convertView.findViewById(R.id.itemLayout);
-        LinearLayout spinnerLayout = (LinearLayout) convertView.findViewById(R.id.spinnerLayout);
-        ImageView userIcon = (ImageView) convertView.findViewById(R.id.userImg);
-        TextView userEmail = (TextView) convertView.findViewById(R.id.userEmail);
-        TextView userName = (TextView) convertView.findViewById(R.id.userName);
 
         DrawerItem dItem = (DrawerItem) this.drawerItemList.get(position);
 
-        if (dItem.isUser()) {
-            headerLayout.setVisibility(LinearLayout.INVISIBLE);
-            itemLayout.setVisibility(LinearLayout.INVISIBLE);
-            spinnerLayout.setVisibility(LinearLayout.VISIBLE);
-            userIcon.setImageResource(R.drawable.ic_people);
-            userEmail.setText("dynastymasra@gmail.com");
-            userName.setText("Dimas Ragil T");
-        } else if (dItem.getTitle() != null) {
+        if (dItem.getTitle() != null) {
             headerLayout.setVisibility(LinearLayout.VISIBLE);
             itemLayout.setVisibility(LinearLayout.INVISIBLE);
-            spinnerLayout.setVisibility(LinearLayout.INVISIBLE);
             title.setText(dItem.getTitle());
         } else {
             headerLayout.setVisibility(LinearLayout.INVISIBLE);
-            spinnerLayout.setVisibility(LinearLayout.INVISIBLE);
             itemLayout.setVisibility(LinearLayout.VISIBLE);
             icon.setImageDrawable(convertView.getResources().getDrawable(dItem.getImgResID()));
             itemName.setText(dItem.getItemName());
         }
+
         return convertView;
     }
 }
