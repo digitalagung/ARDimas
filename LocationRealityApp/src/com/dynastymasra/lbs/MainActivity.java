@@ -102,8 +102,7 @@ public class MainActivity extends Activity {
         Bundle args = new Bundle();
         switch (possition) {
             case 1:
-                fragment = new UserFragment();
-                args.putString(UserFragment.ITEM_NAME, "0");
+                fragment = new MapFragment();
                 break;
             case 2:
                 fragment = new UserFragment();
@@ -126,7 +125,6 @@ public class MainActivity extends Activity {
                 args.putString(UserFragment.ITEM_NAME, "7");
                 break;
         }
-        fragment.setArguments(args);
         FragmentManager frgManager = getFragmentManager();
         frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
