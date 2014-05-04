@@ -13,16 +13,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.dynastymasra.lbs.adapter.CustomDrawerAdapter;
 import com.dynastymasra.lbs.domain.DrawerItem;
-import com.dynastymasra.lbs.fragment.MainFragment;
-import com.dynastymasra.lbs.fragment.UserFragment;
+import com.dynastymasra.lbs.fragment.*;
+import com.dynastymasra.lbs.fragment.MapsFragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
+    private final static LatLng YOGYAKARTA = new LatLng(-7.797069, 110.37053);
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -30,6 +36,7 @@ public class MainActivity extends Activity {
     private CharSequence mTitle;
     private CustomDrawerAdapter adapter;
     private List<DrawerItem> dataList;
+    private GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +50,8 @@ public class MainActivity extends Activity {
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        dataList.add(new DrawerItem("Places Categories"));
-        dataList.add(new DrawerItem("Hotels", R.drawable.ic_hotel));
+        dataList.add(new DrawerItem("Hotels"));
+        dataList.add(new DrawerItem("Hotels", R.drawable.ic_about));
         dataList.add(new DrawerItem("Transportation"));
         dataList.add(new DrawerItem("Airport", R.drawable.ic_airport));
         dataList.add(new DrawerItem("Train Station", R.drawable.ic_train));
@@ -70,6 +77,8 @@ public class MainActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
+        getMaps();
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
@@ -89,6 +98,16 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void getMaps() {
+        if(map == null) {
+            map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(YOGYAKARTA, 15));
+            map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+            map.setMyLocationEnabled(true);
+            map.getUiSettings().setCompassEnabled(true);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -98,35 +117,25 @@ public class MainActivity extends Activity {
     }
 
     public void selectItem(int possition) {
-        Fragment fragment = null;
-        Bundle args = new Bundle();
         switch (possition) {
             case 1:
-                fragment = new MapFragment();
+                map.clear();
+                map.addMarker(new MarkerOptions().position(YOGYAKARTA).title("Yogyakarta").snippet("Yogyakarta Province, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_airport)));
+
                 break;
             case 2:
-                fragment = new UserFragment();
-                args.putString(UserFragment.ITEM_NAME, "2");
+                map.clear();
                 break;
             case 3:
-                fragment = new MainFragment();
-                args.putString(MainFragment.ITEM_NAME, "3");
+                map.clear();
                 break;
             case 4:
-                fragment = new MainFragment();
-                args.putString(MainFragment.ITEM_NAME, "4");
                 break;
             case 5:
-                fragment = new MainFragment();
-                args.putString(MainFragment.ITEM_NAME, "5");
                 break;
             case 7:
-                fragment = new UserFragment();
-                args.putString(UserFragment.ITEM_NAME, "7");
                 break;
         }
-        FragmentManager frgManager = getFragmentManager();
-        frgManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         mDrawerList.setItemChecked(possition, true);
         setTitle(dataList.get(possition).getItemName());
