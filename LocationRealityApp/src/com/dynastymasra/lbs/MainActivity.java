@@ -50,22 +50,31 @@ public class MainActivity extends Activity {
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        dataList.add(new DrawerItem("Hotels"));
-        dataList.add(new DrawerItem("Hotels", R.drawable.ic_about));
+        dataList.add(new DrawerItem("Restaurants & Hotels"));
+        dataList.add(new DrawerItem("Hotel +", R.drawable.ic_hotel_icon));
+        dataList.add(new DrawerItem("Motel", R.drawable.ic_motel_icon));
+        dataList.add(new DrawerItem("Fast Food", R.drawable.ic_fastfood_icon));
+        dataList.add(new DrawerItem("Pizzeria +", R.drawable.ic_pizza_icon));
+        dataList.add(new DrawerItem("Restaurant", R.drawable.ic_restaurant_icon));
+        dataList.add(new DrawerItem("Korean", R.drawable.ic_korean_icon));
+        dataList.add(new DrawerItem("Tourism"));
+        dataList.add(new DrawerItem("Agritourism", R.drawable.ic_agritourism_icon));
+        dataList.add(new DrawerItem("Palace", R.drawable.ic_palace_icon));
+        dataList.add(new DrawerItem("Temple", R.drawable.ic_temple_icon));
+        dataList.add(new DrawerItem("Mosque", R.drawable.ic_mosque_icon));
+        dataList.add(new DrawerItem("Stores"));
+        dataList.add(new DrawerItem("Mall", R.drawable.ic_mall_icon));
+        dataList.add(new DrawerItem("Market", R.drawable.ic_market_icon));
+        dataList.add(new DrawerItem("Supermarket", R.drawable.ic_supermarket_icon));
+        dataList.add(new DrawerItem("Health & Education"));
+        dataList.add(new DrawerItem("Hospital +", R.drawable.ic_hospital_icon));
+        dataList.add(new DrawerItem("Medical Store", R.drawable.ic_medicalstore_icon));
         dataList.add(new DrawerItem("Transportation"));
-        dataList.add(new DrawerItem("Airport", R.drawable.ic_airport));
-        dataList.add(new DrawerItem("Train Station", R.drawable.ic_train));
-        dataList.add(new DrawerItem("Bus Station", R.drawable.ic_bus));
-        dataList.add(new DrawerItem("Tourist Place"));
-        dataList.add(new DrawerItem("Park", R.drawable.ic_park));
-        dataList.add(new DrawerItem("Temple", R.drawable.ic_temple));
-        dataList.add(new DrawerItem("Museum", R.drawable.ic_museum));
+        dataList.add(new DrawerItem("Airport", R.drawable.ic_airport_icon));
+        dataList.add(new DrawerItem("Train Station", R.drawable.ic_train_icon));
+        dataList.add(new DrawerItem("Bus Station", R.drawable.ic_bus_icon));
+        dataList.add(new DrawerItem("Gas Station", R.drawable.ic_fillingstation_icon));
         dataList.add(new DrawerItem("Others"));
-        dataList.add(new DrawerItem("Gas Station", R.drawable.ic_gas));
-        dataList.add(new DrawerItem("Money Changer", R.drawable.ic_money_changer));
-        dataList.add(new DrawerItem("ATM", R.drawable.ic_atm));
-        dataList.add(new DrawerItem("Mosque", R.drawable.ic_mosque));
-        dataList.add(new DrawerItem("Options"));
         dataList.add(new DrawerItem("About", R.drawable.ic_about));
 
         adapter = new CustomDrawerAdapter(this, dataList);
@@ -120,7 +129,7 @@ public class MainActivity extends Activity {
         switch (possition) {
             case 1:
                 map.clear();
-                map.addMarker(new MarkerOptions().position(YOGYAKARTA).title("Yogyakarta").snippet("Yogyakarta Province, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_airport)));
+                map.addMarker(new MarkerOptions().position(YOGYAKARTA).title("Yogyakarta").snippet("Yogyakarta Province, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
 
                 break;
             case 2:
