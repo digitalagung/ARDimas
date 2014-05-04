@@ -3,6 +3,7 @@ package com.dynastymasra.lbs;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import com.dynastymasra.lbs.adapter.CustomDrawerAdapter;
 import com.dynastymasra.lbs.domain.DrawerItem;
 import com.dynastymasra.lbs.fragment.*;
@@ -23,6 +25,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.paar.ch9.ArActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +77,6 @@ public class MainActivity extends Activity {
         dataList.add(new DrawerItem("Train Station", R.drawable.ic_train_icon));
         dataList.add(new DrawerItem("Bus Station", R.drawable.ic_bus_icon));
         dataList.add(new DrawerItem("Gas Station", R.drawable.ic_fillingstation_icon));
-        dataList.add(new DrawerItem("Others"));
-        dataList.add(new DrawerItem("About", R.drawable.ic_about));
 
         adapter = new CustomDrawerAdapter(this, dataList);
 
@@ -102,9 +103,9 @@ public class MainActivity extends Activity {
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null) {
-                selectItem(1);
-        }
+//        if (savedInstanceState == null) {
+//                selectItem(1);
+//        }
     }
 
     public void getMaps() {
@@ -119,7 +120,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -129,8 +129,9 @@ public class MainActivity extends Activity {
         switch (possition) {
             case 1:
                 map.clear();
-                map.addMarker(new MarkerOptions().position(YOGYAKARTA).title("Yogyakarta").snippet("Yogyakarta Province, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
-
+                map.addMarker(new MarkerOptions().position(new LatLng(-7.781868, 110.402147)).title("Royal Ambarrukmo").snippet("Jl. Laksda Adisucipto No.81, Yogyakarta, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
+                map.addMarker(new MarkerOptions().position(new LatLng(-7.783521, 110.391349)).title("Saphir").snippet("Jalan Laksda Adisucipto No.38, Yogyakarta, Daerah Istimewa Yogyakarta 55001, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
+                map.addMarker(new MarkerOptions().position(new LatLng(-7.739325, 110.373405)).title("Hyatt Regency Yogyakarta").snippet("Jalan Palagan Tentara Pelajar, Yogyakarta, Daerah Istimewa Yogyakarta 55581, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
                 break;
             case 2:
                 map.clear();
@@ -178,7 +179,15 @@ public class MainActivity extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return false;
+
+        switch (item.getItemId()) {
+            case R.id.action_camera:
+                Intent intent = new Intent(MainActivity.this, ArActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
