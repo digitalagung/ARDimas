@@ -25,10 +25,6 @@ public class LocalDataSource extends DataSource{
         
         icon=BitmapFactory.decodeResource(res, R.drawable.ic_hotel_marker);
     }
-
-//    map.addMarker(new MarkerOptions().position(new LatLng(-7.781868, 110.402147)).title("Royal Ambarrukmo").snippet("Jl. Laksda Adisucipto No.81, Yogyakarta, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
-//    map.addMarker(new MarkerOptions().position(new LatLng(-7.783521, 110.391349)).title("Saphir").snippet("Jalan Laksda Adisucipto No.38, Yogyakarta, Daerah Istimewa Yogyakarta 55001, Indonesia").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_hotel_marker)));
-//    map.addMarker(new MarkerOptions().position(new LatLng(-7.739325, 110.373405)).title("Hyatt Regency Yogyakarta").snippet("Jalan Palagan Tentara Pelajar, Yogyakarta, Daerah Istimewa
     
     public List<Marker> getMarkers() {
         Marker atl = new IconMarker("Royal Ambarrukmo", -7.781868, 110.402147, 0, Color.TRANSPARENT, icon);
